@@ -1,0 +1,892 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="基本数据类型ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）
+Undefined
+值：undefined
+出现场景：
+使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript类型系统">
+<meta property="og:url" content="http://yoursite.com/2016/03/29/JavaScript-data-structures/index.html">
+<meta property="og:site_name" content="Darko's Notes">
+<meta property="og:description" content="基本数据类型ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）
+Undefined
+值：undefined
+出现场景：
+使用">
+<meta property="og:updated_time" content="2016-03-29T12:17:26.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript类型系统">
+<meta name="twitter:description" content="基本数据类型ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）
+Undefined
+值：undefined
+出现场景：
+使用">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript类型系统 | Darko's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Darko's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript类型系统
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-29T17:03:50+08:00" content="2016-03-29">
+              2016-03-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）</p>
+<h3 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h3><ul>
+<li>值：undefined</li>
+<li>出现场景：<ul>
+<li>使用var声明变量未赋值（相当于 <code>var test = undefined;</code>）</li>
+<li>获取对象不存在的属性<a id="more"></a></li>
+<li>无返回值的函数的执行结果</li>
+<li>函数的参数没有传入</li>
+<li>void（expression）</li>
+</ul>
+</li>
+<li>类型转换：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Boolean</th>
+<th>Number</th>
+<th>String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>undefined</td>
+<td>false</td>
+<td>NaN</td>
+<td>“undefined”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h3><ul>
+<li>值：null。null值表示一个空对象指针，若定义的一个变量准备将来用来保存一个对象，那么最好将变量初始化为一个null。</li>
+<li>出现场景：<ul>
+<li>var test = null；</li>
+<li>null表示调用的对象不存在</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意区分null和undefined的区别？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span>;  <span class="comment">// true</span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span>; <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>类型转换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Boolean</th>
+<th>Number</th>
+<th>String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>false</td>
+<td>0</td>
+<td>“null”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><ul>
+<li>值：true or false。</li>
+<li>出现场景：<ul>
+<li>条件语句导致系统执行的隐式装换</li>
+<li>定义</li>
+</ul>
+</li>
+<li>类型转换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>number</th>
+<th>string</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true</td>
+<td>1</td>
+<td>“true”</td>
+</tr>
+<tr>
+<td>false</td>
+<td>0</td>
+<td>“false”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ul>
+<li>值：由单引号或双引号括起来的字符序列</li>
+<li>出现场景：定义</li>
+<li>类型转换，有两种方法，<code>String()</code> 和 <code>toString()</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Boolean</th>
+<th>Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“”</td>
+<td>false</td>
+<td>0</td>
+</tr>
+<tr>
+<td>“123”</td>
+<td>true</td>
+<td>123</td>
+</tr>
+<tr>
+<td>“a12”</td>
+<td>true</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><ul>
+<li>值：整数和浮点值</li>
+<li>出现场景：</li>
+<li>类型转换，<code>Number()</code>，<code>parseInt()</code> 和 <code>parseFloat()</code>。第一个函数可以应用于任何数据类型，另两个函数专门用于把字符串转换成数值。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Boolean</th>
+<th>String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>false</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>true</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Infinity</td>
+<td>true</td>
+<td>“Infinity”</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>false</td>
+<td>“NaN”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><ul>
+<li>值：一组属性的集合</li>
+<li>出现场景：</li>
+<li>类型转换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Boolean</th>
+<th>Number</th>
+<th>String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{}</td>
+<td>true</td>
+<td>NaN</td>
+<td>“[object Object]”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="类型识别"><a href="#类型识别" class="headerlink" title="类型识别"></a>类型识别</h2><h3 id="typeof-操作符，不是函数"><a href="#typeof-操作符，不是函数" class="headerlink" title="typeof(操作符，不是函数)"></a>typeof(操作符，不是函数)</h3><ul>
+<li>可以识别简单类型（Null除外）</li>
+<li>不能识别具体的对象类型（Function除外）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="string">"darko"</span>; <span class="comment">//"string"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">123</span>;     <span class="comment">//"number"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>;    <span class="comment">//"boolean"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>;    <span class="comment">//"undefined"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;     <span class="comment">//"object"</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;name:<span class="string">"darko"</span>&#125;;  <span class="comment">//"object"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;    <span class="comment">// "function"</span></span><br><span class="line"><span class="keyword">typeof</span> [];      <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Date</span>();  <span class="comment">//"object"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="instanceof-三目运算符"><a href="#instanceof-三目运算符" class="headerlink" title="instanceof(三目运算符)"></a>instanceof(三目运算符)</h3><ul>
+<li>识别内置对象的类型</li>
+<li>不可以识别简单类型</li>
+<li>识别自定义对象类型<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span>;    <span class="comment">//true</span></span><br><span class="line">/\d/ <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>; <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span>;    <span class="comment">//false</span></span><br><span class="line"><span class="string">"abc"</span> <span class="keyword">instanceof</span> <span class="built_in">String</span>;  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><ul>
+<li>识别简单类型（undefined和null除外）</li>
+<li>识别内置对象类型</li>
+<li>识别自定义对象类型<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>).constructor === <span class="built_in">Number</span>; <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span>.constructor === <span class="built_in">Boolean</span>; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[].constructor === <span class="built_in">Array</span>;   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h3><ul>
+<li>可以简单类型和内置对象</li>
+<li>不能识别自定义类型<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">type</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj).slice(<span class="number">8</span>, <span class="number">-1</span>).toLowerCase();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/photo.png"
+               alt="Darko" />
+          <p class="site-author-name" itemprop="name">Darko</p>
+          <p class="site-description motion-element" itemprop="description">念念不忘，必有回响</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/leonwebdever" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null"><span class="nav-number">1.2.</span> <span class="nav-text">Null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean"><span class="nav-number">1.3.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.4.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">1.5.</span> <span class="nav-text">Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object"><span class="nav-number">1.6.</span> <span class="nav-text">Object</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型识别"><span class="nav-number">2.</span> <span class="nav-text">类型识别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-操作符，不是函数"><span class="nav-number">2.1.</span> <span class="nav-text">typeof(操作符，不是函数)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof-三目运算符"><span class="nav-number">2.2.</span> <span class="nav-text">instanceof(三目运算符)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor-NaN"><span class="nav-number">2.3.</span> <span class="nav-text">constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toString"><span class="nav-number">2.4.</span> <span class="nav-text">Object.prototype.toString</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darko</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>

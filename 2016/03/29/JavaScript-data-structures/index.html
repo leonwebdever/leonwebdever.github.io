@@ -47,6 +47,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Darko's Notes" type="application/atom+xml" />
+
 
 
 
@@ -71,7 +73,7 @@ Undefined
 值：undefined
 出现场景：
 使用">
-<meta property="og:updated_time" content="2016-03-29T12:17:26.531Z">
+<meta property="og:updated_time" content="2016-04-04T15:25:17.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript类型系统">
 <meta name="twitter:description" content="基本数据类型ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）
@@ -104,6 +106,16 @@ Undefined
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7f6cf4c04b1342a420e2e9bf919e6033";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -157,12 +169,12 @@ Undefined
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
-            关于
+            分类
           </a>
         </li>
       
@@ -242,8 +254,34 @@ Undefined
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/29/JavaScript-data-structures/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/JavaScript-data-structures/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -268,7 +306,7 @@ Undefined
 <li>值：undefined</li>
 <li>出现场景：<ul>
 <li>使用var声明变量未赋值（相当于 <code>var test = undefined;</code>）</li>
-<li>获取对象不存在的属性<a id="more"></a></li>
+<li>获取对象不存在的属性</li>
 <li>无返回值的函数的执行结果</li>
 <li>函数的参数没有传入</li>
 <li>void（expression）</li>
@@ -294,6 +332,7 @@ Undefined
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h3 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h3><ul>
 <li>值：null。null值表示一个空对象指针，若定义的一个变量准备将来用来保存一个对象，那么最好将变量初始化为一个null。</li>
 <li>出现场景：<ul>
@@ -510,6 +549,10 @@ Undefined
           
   <div class="comments" id="comments">
     
+      <div class="ds-thread" data-thread-key="2016/03/29/JavaScript-data-structures/"
+           data-title="JavaScript类型系统" data-url="http://yoursite.com/2016/03/29/JavaScript-data-structures/">
+      </div>
+    
   </div>
 
 
@@ -558,6 +601,13 @@ Undefined
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
@@ -570,6 +620,13 @@ Undefined
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
@@ -875,9 +932,28 @@ Undefined
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"darko"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
+    
+  
+
+
 
 
 

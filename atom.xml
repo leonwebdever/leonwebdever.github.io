@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Darko&#39;s Notes</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-04-04T15:25:17.746Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Darko</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript类型系统</title>
+    <link href="http://yoursite.com/2016/03/29/JavaScript-data-structures/"/>
+    <id>http://yoursite.com/2016/03/29/JavaScript-data-structures/</id>
+    <published>2016-03-29T09:03:50.000Z</published>
+    <updated>2016-04-04T15:25:17.746Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;基本数据类型&quot;&gt;&lt;a href=&quot;#基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;基本数据类型&quot;&gt;&lt;/a&gt;基本数据类型&lt;/h2&gt;&lt;p&gt;ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）&lt;/p&gt;
+&lt;h3 id=&quot;Undefined&quot;&gt;&lt;a href=&quot;#Undefined&quot; class=&quot;headerlink&quot; title=&quot;Undefined&quot;&gt;&lt;/a&gt;Undefined&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：undefined&lt;/li&gt;
+&lt;li&gt;出现场景：&lt;ul&gt;
+&lt;li&gt;使用var声明变量未赋值（相当于 &lt;code&gt;var test = undefined;&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;获取对象不存在的属性&lt;/li&gt;
+&lt;li&gt;无返回值的函数的执行结果&lt;/li&gt;
+&lt;li&gt;函数的参数没有传入&lt;/li&gt;
+&lt;li&gt;void（expression）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;类型转换：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Boolean&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;th&gt;String&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;undefined&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;NaN&lt;/td&gt;
+&lt;td&gt;“undefined”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Null&quot;&gt;&lt;a href=&quot;#Null&quot; class=&quot;headerlink&quot; title=&quot;Null&quot;&gt;&lt;/a&gt;Null&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：null。null值表示一个空对象指针，若定义的一个变量准备将来用来保存一个对象，那么最好将变量初始化为一个null。&lt;/li&gt;
+&lt;li&gt;出现场景：&lt;ul&gt;
+&lt;li&gt;var test = null；&lt;/li&gt;
+&lt;li&gt;null表示调用的对象不存在&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意区分null和undefined的区别？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; == &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;;  &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; === &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;类型转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Boolean&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;th&gt;String&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;“null”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;Boolean&quot;&gt;&lt;a href=&quot;#Boolean&quot; class=&quot;headerlink&quot; title=&quot;Boolean&quot;&gt;&lt;/a&gt;Boolean&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：true or false。&lt;/li&gt;
+&lt;li&gt;出现场景：&lt;ul&gt;
+&lt;li&gt;条件语句导致系统执行的隐式装换&lt;/li&gt;
+&lt;li&gt;定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;类型转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;number&lt;/th&gt;
+&lt;th&gt;string&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;“true”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;“false”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;String&quot;&gt;&lt;a href=&quot;#String&quot; class=&quot;headerlink&quot; title=&quot;String&quot;&gt;&lt;/a&gt;String&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：由单引号或双引号括起来的字符序列&lt;/li&gt;
+&lt;li&gt;出现场景：定义&lt;/li&gt;
+&lt;li&gt;类型转换，有两种方法，&lt;code&gt;String()&lt;/code&gt; 和 &lt;code&gt;toString()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Boolean&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;“”&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;“123”&lt;/td&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;“a12”&lt;/td&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;NaN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;Number&quot;&gt;&lt;a href=&quot;#Number&quot; class=&quot;headerlink&quot; title=&quot;Number&quot;&gt;&lt;/a&gt;Number&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：整数和浮点值&lt;/li&gt;
+&lt;li&gt;出现场景：&lt;/li&gt;
+&lt;li&gt;类型转换，&lt;code&gt;Number()&lt;/code&gt;，&lt;code&gt;parseInt()&lt;/code&gt; 和 &lt;code&gt;parseFloat()&lt;/code&gt;。第一个函数可以应用于任何数据类型，另两个函数专门用于把字符串转换成数值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Boolean&lt;/th&gt;
+&lt;th&gt;String&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Infinity&lt;/td&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;“Infinity”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NaN&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;“NaN”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;Object&quot;&gt;&lt;a href=&quot;#Object&quot; class=&quot;headerlink&quot; title=&quot;Object&quot;&gt;&lt;/a&gt;Object&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：一组属性的集合&lt;/li&gt;
+&lt;li&gt;出现场景：&lt;/li&gt;
+&lt;li&gt;类型转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Boolean&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;th&gt;String&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;{}&lt;/td&gt;
+&lt;td&gt;true&lt;/td&gt;
+&lt;td&gt;NaN&lt;/td&gt;
+&lt;td&gt;“[object Object]”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;类型识别&quot;&gt;&lt;a href=&quot;#类型识别&quot; class=&quot;headerlink&quot; title=&quot;类型识别&quot;&gt;&lt;/a&gt;类型识别&lt;/h2&gt;&lt;h3 id=&quot;typeof-操作符，不是函数&quot;&gt;&lt;a href=&quot;#typeof-操作符，不是函数&quot; class=&quot;headerlink&quot; title=&quot;typeof(操作符，不是函数)&quot;&gt;&lt;/a&gt;typeof(操作符，不是函数)&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以识别简单类型（Null除外）&lt;/li&gt;
+&lt;li&gt;不能识别具体的对象类型（Function除外）&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;darko&quot;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//&quot;string&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;123&lt;/span&gt;;     &lt;span class=&quot;comment&quot;&gt;//&quot;number&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;    &lt;span class=&quot;comment&quot;&gt;//&quot;boolean&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;;    &lt;span class=&quot;comment&quot;&gt;//&quot;undefined&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;;     &lt;span class=&quot;comment&quot;&gt;//&quot;object&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &amp;#123;name:&lt;span class=&quot;string&quot;&gt;&quot;darko&quot;&lt;/span&gt;&amp;#125;;  &lt;span class=&quot;comment&quot;&gt;//&quot;object&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&amp;#125;;    &lt;span class=&quot;comment&quot;&gt;// &quot;function&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; [];      &lt;span class=&quot;comment&quot;&gt;// &quot;object&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;();  &lt;span class=&quot;comment&quot;&gt;//&quot;object&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;instanceof-三目运算符&quot;&gt;&lt;a href=&quot;#instanceof-三目运算符&quot; class=&quot;headerlink&quot; title=&quot;instanceof(三目运算符)&quot;&gt;&lt;/a&gt;instanceof(三目运算符)&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;识别内置对象的类型&lt;/li&gt;
+&lt;li&gt;不可以识别简单类型&lt;/li&gt;
+&lt;li&gt;识别自定义对象类型&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[] &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;;    &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/\d/ &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;;    &lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;;  &lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;constructor-NaN&quot;&gt;&lt;a href=&quot;#constructor-NaN&quot; class=&quot;headerlink&quot; title=&quot;constructor&quot;&gt;&lt;/a&gt;constructor&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;识别简单类型（undefined和null除外）&lt;/li&gt;
+&lt;li&gt;识别内置对象类型&lt;/li&gt;
+&lt;li&gt;识别自定义对象类型&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;).constructor === &lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;.constructor === &lt;span class=&quot;built_in&quot;&gt;Boolean&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[].constructor === &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;;   &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Object-prototype-toString&quot;&gt;&lt;a href=&quot;#Object-prototype-toString&quot; class=&quot;headerlink&quot; title=&quot;Object.prototype.toString&quot;&gt;&lt;/a&gt;Object.prototype.toString&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以简单类型和内置对象&lt;/li&gt;
+&lt;li&gt;不能识别自定义类型&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;type&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;obj&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;.prototype.toString.call(obj).slice(&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;).toLowerCase();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基本数据类型&quot;&gt;&lt;a href=&quot;#基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;基本数据类型&quot;&gt;&lt;/a&gt;基本数据类型&lt;/h2&gt;&lt;p&gt;ECMAScript中有5种简单数据类型（也称基本数据类型）：Undefined，Null，Boolean，Number和String。还有一种复杂数据类型（引用型）Object。ECMAScript不支持任何创建自定义类型的机制，而所有值都是上述6中数据类型之一。（ps：ES6新增了一种数据类型Symbol，这里不做讨论）&lt;/p&gt;
+&lt;h3 id=&quot;Undefined&quot;&gt;&lt;a href=&quot;#Undefined&quot; class=&quot;headerlink&quot; title=&quot;Undefined&quot;&gt;&lt;/a&gt;Undefined&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;值：undefined&lt;/li&gt;
+&lt;li&gt;出现场景：&lt;ul&gt;
+&lt;li&gt;使用var声明变量未赋值（相当于 &lt;code&gt;var test = undefined;&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;获取对象不存在的属性&lt;/li&gt;
+&lt;li&gt;无返回值的函数的执行结果&lt;/li&gt;
+&lt;li&gt;函数的参数没有传入&lt;/li&gt;
+&lt;li&gt;void（expression）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;类型转换：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Boolean&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;th&gt;String&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;undefined&lt;/td&gt;
+&lt;td&gt;false&lt;/td&gt;
+&lt;td&gt;NaN&lt;/td&gt;
+&lt;td&gt;“undefined”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+</feed>

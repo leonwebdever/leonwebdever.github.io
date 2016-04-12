@@ -227,7 +227,7 @@
               
                 
                 <a class="post-title-link" href="/2016/04/13/Javascript-prototype/" itemprop="url">
-                  Javascript-prototype
+                  JavaScript学习总结——原型
                 </a>
               
             
@@ -296,9 +296,7 @@
         
           <h2 id="什么是原型"><a href="#什么是原型" class="headerlink" title="什么是原型"></a>什么是原型</h2><p>首先，原型是一个对象。而且所有的对象都有一个原型（有一种例外：当把对象的原型设为null时），并且任何对象都可以成为一个原型。</p>
 <p>当我们定义一个对象时 <code>var a = new Object();</code> 默认的原型在原型链的顶端。</p>
-<h2 id="原型有什么好处"><a href="#原型有什么好处" class="headerlink" title="原型有什么好处"></a>原型有什么好处</h2><p>原型最大的好处体现在它的 <code>共享</code> 的特性。所有原型对象的实例对象共享它所包含的属性和方法。所以我们常用利用原型来创建对象，也就是 <code>原型模式</code>。</p>
-<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><p><code>原型模式</code> 是一种用来创建多个实例对象的方法，我们常常把它和 <code>构造函数</code>结合起来用来创建特定类型的对象。</p>
-<p>我们创建的每一个函数都有一个 <code>prototype</code> 属性，这个属性是一个指针，指向一个对象。这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。这个对象就是实际上通过调用构造函数而创建的 <code>实例对象</code> 的原型对象。<strong>看代码：</strong><br>
+<h2 id="原型有什么好处"><a href="#原型有什么好处" class="headerlink" title="原型有什么好处"></a>原型有什么好处</h2><p>原型最大的好处体现在它的 <code>共享</code> 的特性。所有原型对象的实例对象共享它所包含的属性和方法。所以我们常用利用原型来创建对象，也就是 <code>原型模式</code>。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/13/Javascript-prototype/#more" rel="contents">
               阅读全文 &raquo;

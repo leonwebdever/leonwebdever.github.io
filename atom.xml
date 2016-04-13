@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-12T18:35:29.800Z</updated>
+  <updated>2016-04-13T02:35:29.284Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/04/13/Javascript-prototype/"/>
     <id>http://yoursite.com/2016/04/13/Javascript-prototype/</id>
     <published>2016-04-12T18:03:47.000Z</published>
-    <updated>2016-04-12T18:35:29.800Z</updated>
+    <updated>2016-04-13T02:35:29.284Z</updated>
     
     <content type="html">&lt;h2 id=&quot;什么是原型&quot;&gt;&lt;a href=&quot;#什么是原型&quot; class=&quot;headerlink&quot; title=&quot;什么是原型&quot;&gt;&lt;/a&gt;什么是原型&lt;/h2&gt;&lt;p&gt;首先，原型是一个对象。而且所有的对象都有一个原型（有一种例外：当把对象的原型设为null时），并且任何对象都可以成为一个原型。&lt;/p&gt;
 &lt;p&gt;当我们定义一个对象时 &lt;code&gt;var a = new Object();&lt;/code&gt; 默认的原型在原型链的顶端。&lt;/p&gt;
@@ -34,7 +34,7 @@
 &lt;p&gt;实例对象可以访问原型对象上的属性和方法。在实例对象的内部有一个属性（内部属性）&lt;code&gt;[[Prototype]]&lt;/code&gt;指向其原型对象。有一种非标准方法&lt;code&gt;__proto__&lt;/code&gt;访问&lt;code&gt;[[Prototype]]&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;在上面的例子中&lt;code&gt;person1&lt;/code&gt;和&lt;code&gt;person2&lt;/code&gt;就是实例对象，构造函数为&lt;code&gt;Person&lt;/code&gt;，原型对象为&lt;code&gt;Person.prototype&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;来，看个栗子（还是上面那段代码）:&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.constructor === Person);  &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(Person.prototype.constructor === Person);  &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alerta(person1.__proto__ === Person.prototype); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;来看个图你就什么都懂了：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://a3.qpic.cn/psb?/V11rpDTc2NVDnW/LAjQi77jz9gnvmkXE4F*e5VgETWqExA52AETqdi.TEk!/b/dHABAAAAAAAA&amp;amp;bo=jgJ5AQAAAAADB9Y!&amp;amp;rf=viewer_4&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;来看个图你就什么都懂了：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/images/prototype.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;理解prototype，getPrototypeOf和-proto-之间的不同&quot;&gt;&lt;a href=&quot;#理解prototype，getPrototypeOf和-proto-之间的不同&quot; class=&quot;headerlink&quot; title=&quot;理解prototype，getPrototypeOf和 proto 之间的不同&quot;&gt;&lt;/a&gt;理解prototype，getPrototypeOf和 &lt;strong&gt;proto&lt;/strong&gt; 之间的不同&lt;/h2&gt;&lt;p&gt;&lt;code&gt;prototype&lt;/code&gt;是函数的一个默认属性，只有函数对象才有&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Object.getPrototypeOf()&lt;/code&gt;方法用来返回实例对象内部属性&lt;code&gt;[[prototype]]&lt;/code&gt;的值。这是ES5中定义的用来获取原型对象的标准方法。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;__proto__&lt;/code&gt;属性是获取原型对象的非标准方法（IE不支持）&lt;br&gt;&lt;strong&gt;看个栗子（还是上面那段代码）:&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;alert(Object.getPrototypeOf(person1) === Person.prototype); // true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(Object.getPrototypeOf(person1).name); // &amp;quot;darko&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.__proto__ === Person.prototype);    // true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.__proto__.name);  // &amp;quot;darko&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;

@@ -69,14 +69,14 @@
 <meta property="og:description" content="什么是原型首先，原型是一个对象。而且所有的对象都有一个原型（有一种例外：当把对象的原型设为null时），并且任何对象都可以成为一个原型。
 当我们定义一个对象时 var a = new Object(); 默认的原型在原型链的顶端。
 原型有什么好处原型最大的好处体现在它的 共享 的特性。所有原型对象的实例对象共享它所包含的属性和方法。所以我们常用利用原型来创建对象，也就是 原型模式。">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11rpDTc2NVDnW/LAjQi77jz9gnvmkXE4F*e5VgETWqExA52AETqdi.TEk!/b/dHABAAAAAAAA&bo=jgJ5AQAAAAADB9Y!&rf=viewer_4">
-<meta property="og:updated_time" content="2016-04-12T18:35:29.800Z">
+<meta property="og:image" content="http://yoursite.com/images/prototype.png">
+<meta property="og:updated_time" content="2016-04-13T02:35:29.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript学习总结——原型">
 <meta name="twitter:description" content="什么是原型首先，原型是一个对象。而且所有的对象都有一个原型（有一种例外：当把对象的原型设为null时），并且任何对象都可以成为一个原型。
 当我们定义一个对象时 var a = new Object(); 默认的原型在原型链的顶端。
 原型有什么好处原型最大的好处体现在它的 共享 的特性。所有原型对象的实例对象共享它所包含的属性和方法。所以我们常用利用原型来创建对象，也就是 原型模式。">
-<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V11rpDTc2NVDnW/LAjQi77jz9gnvmkXE4F*e5VgETWqExA52AETqdi.TEk!/b/dHABAAAAAAAA&bo=jgJ5AQAAAAADB9Y!&rf=viewer_4">
+<meta name="twitter:image" content="http://yoursite.com/images/prototype.png">
 
 
 
@@ -309,7 +309,7 @@
 <p>实例对象可以访问原型对象上的属性和方法。在实例对象的内部有一个属性（内部属性）<code>[[Prototype]]</code>指向其原型对象。有一种非标准方法<code>__proto__</code>访问<code>[[Prototype]]</code>。</p>
 <p>在上面的例子中<code>person1</code>和<code>person2</code>就是实例对象，构造函数为<code>Person</code>，原型对象为<code>Person.prototype</code>。</p>
 <p><strong>来，看个栗子（还是上面那段代码）:</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(person1.constructor === Person);  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">alert(Person.prototype.constructor === Person);  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">alerta(person1.__proto__ === Person.prototype); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>来看个图你就什么都懂了：</strong><br><img src="http://a3.qpic.cn/psb?/V11rpDTc2NVDnW/LAjQi77jz9gnvmkXE4F*e5VgETWqExA52AETqdi.TEk!/b/dHABAAAAAAAA&amp;bo=jgJ5AQAAAAADB9Y!&amp;rf=viewer_4" alt="image"></p>
+<p><strong>来看个图你就什么都懂了：</strong><br><img src="/images/prototype.png" alt="image"></p>
 <h2 id="理解prototype，getPrototypeOf和-proto-之间的不同"><a href="#理解prototype，getPrototypeOf和-proto-之间的不同" class="headerlink" title="理解prototype，getPrototypeOf和 proto 之间的不同"></a>理解prototype，getPrototypeOf和 <strong>proto</strong> 之间的不同</h2><p><code>prototype</code>是函数的一个默认属性，只有函数对象才有</p>
 <p><code>Object.getPrototypeOf()</code>方法用来返回实例对象内部属性<code>[[prototype]]</code>的值。这是ES5中定义的用来获取原型对象的标准方法。</p>
 <p><code>__proto__</code>属性是获取原型对象的非标准方法（IE不支持）<br><strong>看个栗子（还是上面那段代码）:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(Object.getPrototypeOf(person1) === Person.prototype); // true</span><br><span class="line">alert(Object.getPrototypeOf(person1).name); // &quot;darko&quot;</span><br><span class="line"></span><br><span class="line">alert(person1.__proto__ === Person.prototype);    // true</span><br><span class="line">alert(person1.__proto__.name);  // &quot;darko&quot;</span><br></pre></td></tr></table></figure></p>
